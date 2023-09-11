@@ -2,6 +2,10 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
+  run-image:
+    description: 'Image to be run.'
+    required: true
+    default: 'Dockerfile'
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
@@ -11,6 +15,6 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: ${{ inputs.run-image }}
   args:
     - ${{ inputs.who-to-greet }}
